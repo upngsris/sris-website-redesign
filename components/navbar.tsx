@@ -165,13 +165,14 @@ export default function Navbar() {
               className="flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               aria-label="SRIS — go to homepage"
             >
-              <Image
-                src="/assets/Logo.webp"
-                alt="SRIS logo"
-                width= {52}
-                height= {52}
-                className="rounded-full object-cover"
-              />
+                <Image
+                  src="/assets/Logo.webp"
+                  alt="SRIS logo"
+                  width={75}
+                  height={75}
+                  className="object-contain"
+                  style={{ width: 75, height: 75 }}
+                />
               <div className="flex flex-col leading-tight">
                 <span className="text-lg font-bold tracking-tight text-[var(--color-secodary)]">
                   <span>UPNG </span>SRIS

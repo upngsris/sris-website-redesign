@@ -163,7 +163,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-[#1B3A6B]" aria-label="Site footer">
+    <footer className="w-full bg-[#0D1B2A]" aria-label="Site footer">
 
       {/* ── Crimson accent line at the very top of the footer ── */}
       <div className="h-1 bg-[#C5293E]" aria-hidden="true" />
@@ -189,11 +189,12 @@ export default function Footer() {
               aria-label="SRIS — go to homepage"
             >
               <Image
-                src="/assets/Logo.webp"
-                alt="SRIS logo"
-                width={52}
-                height={52}
-                className="rounded-full object-cover"
+                  src="/assets/Logo.webp"
+                  alt="SRIS logo"
+                  width={75}
+                  height={75}
+                  className="object-contain"
+                  style={{ width: 75, height: 75 }}
               />
               <div className="flex flex-col leading-tight">
                 <span className="text-lg font-bold tracking-tight text-white">

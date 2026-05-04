@@ -16,6 +16,7 @@ import { useState, useCallback } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import Hero from "@/components/ui/Hero";
 
 // ─── Brand tokens ─────────────────────────────────────────────────────────────
 // Navy: #0D1B2A  Gold/Orange: #E8870A  Light bg: #F5F6F8
@@ -137,15 +138,15 @@ const Label = ({
     className="block text-sm font-semibold text-[#0D1B2A] mb-1.5"
   >
     {children}
-    {required && <span className="text-[#E8870A] ml-0.5">*</span>}
+    {required && <span className="text-[#E8621A] ml-0.5">*</span>}
   </label>
 );
 
 const inputCls =
-  "w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-[#0D1B2A] placeholder:text-slate-400 focus:border-[#E8870A] focus:outline-none focus:ring-2 focus:ring-[#E8870A]/20 transition";
+  "w-full border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-[#0D1B2A] placeholder:text-slate-400 focus:border-[#E8621A] focus:outline-none focus:ring-2 focus:ring-[#E8621A]/20 transition";
 
 const selectCls =
-  "w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-[#0D1B2A] focus:border-[#E8870A] focus:outline-none focus:ring-2 focus:ring-[#E8870A]/20 transition appearance-none";
+  "w-full border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-[#0D1B2A] focus:border-[#E8621A] focus:outline-none focus:ring-2 focus:ring-[#E8621A]/20 transition appearance-none";
 
 // ─── Section header ───────────────────────────────────────────────────────────
 const SectionHeader = ({
@@ -158,7 +159,7 @@ const SectionHeader = ({
   subtitle: string;
 }) => (
   <div className="flex items-start gap-4 mb-6">
-    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#E8870A] flex items-center justify-center text-white text-xs font-bold">
+    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#E8621A] flex items-center justify-center text-white text-xs font-bold">
       {step}
     </div>
     <div>
@@ -230,13 +231,14 @@ export default function JoinPage() {
 
   // ── Render ──────────────────────────────────────────────────────────────────
   return (
+    
     <div className="min-h-screen bg-[#F5F6F8]">
-      {/* ── Top Nav Bar ── */}
+      {/* ── Top Nav Bar ── 
       <header className="bg-[#0D1B2A] border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            {/* Logo mark */}
-            <div className="w-7 h-7 rounded bg-[#E8870A] flex items-center justify-center text-white font-black text-xs">
+            {/* Logo mark 
+            <div className="w-7 h-7 bg-[#E8870A] flex items-center justify-center text-white font-black text-xs">
               S
             </div>
             <span className="text-white font-bold text-sm tracking-wide">
@@ -250,28 +252,31 @@ export default function JoinPage() {
             Already a member? Sign in →
           </a>
         </div>
-      </header>
+      </header>*/}
 
       {/* ── Hero strip ── */}
-      <div className="bg-[#0D1B2A] pb-16 pt-10">
-        <div className="max-w-2xl mx-auto px-4 text-center">
-          <span className="inline-block text-[10px] font-bold tracking-[0.2em] uppercase text-[#E8870A] mb-3">
-            Science, Research & Innovation Society
-          </span>
-          <h1 className="text-3xl md:text-4xl font-black text-white leading-tight">
-            Join UPNG SRIS
-          </h1>
-          <p className="mt-3 text-slate-400 text-sm max-w-md mx-auto">
-            Become part of a community of curious minds pushing the frontiers of
-            science and innovation at the University of Papua New Guinea.
-          </p>
-        </div>
-      </div>
+      {/* ══════════════════════════════════════════════════════════════════
+          1. PAGE HERO
+      ══════════════════════════════════════════════════════════════════ */}
+      <section className="relative overflow-hidden bg-[#0D1B2A]" aria-label="About page hero">
+        <Hero
+            backgroundImage="/assets/banner-image.jpg"
+            badge={{ label: "Science, Research & Innovation Society" }}
+            headline="Join UPNG SRIS"
+            accentText="SRIS"
+            subheading="Become part of a community of curious minds pushing the frontiers of
+            science and innovation at the University of Papua New Guinea."
+            breadcrumb={[
+                { label: "Home", href: "/" },
+                { label: "Join", href: "/join" },
+            ]}
+        />
+      </section>t
 
       {/* ── Form card (pulls up over hero) ── */}
       <div className="max-w-2xl mx-auto px-4 -mt-8 pb-20">
         {success ? (
-          <div className="bg-white rounded-2xl shadow-xl border border-green-100 p-10 text-center">
+          <div className="bg-white shadow-xl border border-green-100 p-10 text-center">
             <div className="w-16 h-16 rounded-full bg-green-50 border-2 border-green-400 flex items-center justify-center mx-auto mb-5">
               <svg className="w-8 h-8 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -286,11 +291,11 @@ export default function JoinPage() {
               business days.
             </p>
             <div className="mt-6 w-full bg-slate-100 rounded-full h-1 overflow-hidden">
-              <div className="h-1 bg-[#E8870A] animate-[shrink_4s_linear_forwards]" style={{ width: "100%", animation: "width 4s linear" }} />
+              <div className="h-1 bg-[#E8621A] animate-[shrink_4s_linear_forwards]" style={{ width: "100%", animation: "width 4s linear" }} />
             </div>
           </div>
         ) : (
-          <div className="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden">
+          <div className="bg-white shadow-xl border border-slate-100 overflow-hidden">
             {/* ── Category selector ── */}
             <div className="border-b border-slate-100 p-1.5 flex bg-slate-50">
               {(
@@ -304,7 +309,7 @@ export default function JoinPage() {
                   key={key}
                   type="button"
                   onClick={() => handleCategoryChange(key)}
-                  className={`flex-1 py-2.5 text-sm font-semibold rounded-lg transition-all ${
+                  className={`flex-1 py-2.5 text-sm font-semibold transition-all ${
                     category === key
                       ? "bg-[#0D1B2A] text-white shadow-sm"
                       : "text-slate-500 hover:text-[#0D1B2A]"
@@ -536,11 +541,11 @@ export default function JoinPage() {
                   ].map((tier) => (
                     <div
                       key={tier.label}
-                      className={`flex-1 rounded-xl border-2 p-3 text-center transition ${
+                      className={`flex-1 border-2 p-3 text-center transition ${
                         (category === "student" && tier.label === "Student") ||
                         (category === "staff" && tier.label === "Staff") ||
                         (category === "other" && tier.label === "Other")
-                          ? "border-[#E8870A] bg-[#E8870A]/5"
+                          ? "border-[#E8621A] bg-[#E8870A]/5"
                           : "border-slate-100 bg-slate-50 opacity-50"
                       }`}
                     >
@@ -610,19 +615,19 @@ export default function JoinPage() {
                           onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
                           onDragLeave={() => setDragOver(false)}
                           onDrop={handleDrop}
-                          className={`flex flex-col items-center justify-center w-full rounded-xl border-2 border-dashed cursor-pointer transition py-8 px-4 text-center ${
+                          className={`flex flex-col items-center justify-center w-full border-2 border-dashed cursor-pointer transition py-8 px-4 text-center ${
                             dragOver
-                              ? "border-[#E8870A] bg-[#E8870A]/5"
+                              ? "border-[#E8621A] bg-[#E8870A]/5"
                               : errors.receiptFile
                               ? "border-red-300 bg-red-50"
-                              : "border-slate-200 bg-slate-50 hover:border-[#E8870A]/50 hover:bg-[#E8870A]/5"
+                              : "border-slate-200 bg-slate-50 hover:border-[#E8621A]/50 hover:bg-[#E8870A]/5"
                           }`}
                         >
                           <svg className="w-8 h-8 text-slate-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                           </svg>
                           {fileName ? (
-                            <span className="text-sm font-semibold text-[#E8870A]">{fileName}</span>
+                            <span className="text-sm font-semibold text-[#E8621A]">{fileName}</span>
                           ) : (
                             <>
                               <span className="text-sm font-semibold text-[#0D1B2A]">Drop file or click to browse</span>
@@ -652,7 +657,7 @@ export default function JoinPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3.5 rounded-xl bg-[#E8870A] hover:bg-[#d17a09] active:bg-[#c06f08] text-white font-bold text-sm tracking-wide transition disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-[#E8870A]/30"
+                  className="w-full py-3.5 bg-[#E8621A] hover:bg-[#E8621A] active:bg-[#E8621A] text-white font-bold text-sm tracking-wide transition disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-[#E8870A]/30"
                 >
                   {isSubmitting ? (
                     <>
